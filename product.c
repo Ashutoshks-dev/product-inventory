@@ -1,6 +1,5 @@
 #include <stdio.h>
-#include <string.h>
-#include <math.h>
+#include <stdlib.h>
 
 struct product{
     char name[50];
@@ -13,17 +12,24 @@ struct product input();
 void display(struct product s);
 
 int main(){
-   
-struct product s[3];
+    int n;
+    struct product *ptr;
+    printf("How many products:");
+    scanf("%d",&n);
+    
+    ptr = malloc(n*sizeof(struct product));
+    
 
-for (int i = 0; i < 3; i++)
-{
-    s[i] = input();
-}
-for (int i = 0; i < 3; i++)
-{
-    display(s[i]);
-}
+    for (int i = 0; i < n; i++)
+    {
+        ptr[i] = input();
+    }
+    for (int i = 0; i < n; i++)
+    {
+        display(ptr[i]);
+    }
+
+    free(ptr);
 
 
 
